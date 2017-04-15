@@ -11,17 +11,16 @@ import NewsArchive from './components/NewsArchive';
 import Bookmarks from './components/Bookmarks';
 import Profile from './components/Profile';
 import Search from './components/Search';
-import { reshapeNewsData } from './util/dataTransformations';
 import nytFetch from './util/nytFetch';
+
+
+import store from './store';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      news: [],
-      bookmarks: [],
-      searchTerm: '',
-    };
+    console.log(store);
+    this.state = store.getState();
 
     this.onUpdateSearch = this.onUpdateSearch.bind(this);
   }
@@ -33,13 +32,13 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const self = this;
-    nytFetch('technology')
-      .then(result => {
-        self.setState({
-          news: reshapeNewsData(result.results),
-        });
-      })
+    // const self = this;
+    // nytFetch('technology')
+    //   .then(result => {
+    //     self.setState({
+    //       news: reshapeNewsData(result.results),
+    //     });
+    //   });
   }
 
   render() {
