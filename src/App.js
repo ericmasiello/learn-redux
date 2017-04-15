@@ -12,6 +12,7 @@ import Bookmarks from './components/Bookmarks';
 import Profile from './components/Profile';
 import Search from './components/Search';
 import { reshapeNewsData } from './util/dataTransformations';
+import fetcher from './util/fetcher';
 
 import news from './data.json';
 
@@ -19,6 +20,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      news: [],
       bookmarks: [],
       searchTerm: '',
     };
@@ -30,6 +32,16 @@ class App extends Component {
     this.setState({
       searchTerm: event.target.value,
     });
+  }
+
+  componentDidMount() {
+    const self = this;
+    fetcher('http://api.nytimes.com/svc/topstories/v2/technology.json?api-key=3c2818c0a9774b299918c6c9767373aa')
+      .then(result => {
+        self.setState({
+          news: reshapeNewsData(result.results),
+        });
+      })
   }
 
   render() {
@@ -58,7 +70,7 @@ class App extends Component {
               render={(props) => (
                 <NewsArchive
                   {...props}
-                  news={reshapeNewsData(news.results)}
+                  news={this.state.news}
                 />
               )}/>
             <Route path="/bookmarks" component={Bookmarks}/>
