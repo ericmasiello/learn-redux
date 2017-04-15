@@ -1,0 +1,9 @@
+.search {
+  font-size: 1.6rem;
+  border: 1px solid #ccc;
+  padding: 5px;
+  width: 100%;
+  display: block;
+  max-width: 600px;
+  margin: 20px auto 0;
+}
