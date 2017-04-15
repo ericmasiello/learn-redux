@@ -1,0 +1,46 @@
+.article-hero {
+  display: flex;
+  min-height: 150px;
+  align-items: flex-end;
+  position: relative;
+  border-width: 0 0 10px;
+  border-style: solid;
+  margin-bottom: 10px;
+}
+
+.article-hero__image {
+  background-color: #d31d65;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.7;  
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  filter: brightness(50%);
+}
+
+.article-hero__title {
+  padding: 10px;
+  color: #fff;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
+  font-weight: 600;
+  margin: 0;
+  z-index: 2;
+}
+
+.bookmark {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  z-index: 3;
+  fill: rgba(255, 255, 255, 0.2);
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.bookmark--selected {
+  fill: #d31d65;
+}
