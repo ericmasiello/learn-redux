@@ -12,9 +12,9 @@ import Bookmarks from './components/Bookmarks';
 import Profile from './components/Profile';
 import Search from './components/Search';
 import { reshapeNewsData } from './util/dataTransformations';
-import fetcher from './util/fetcher';
+import nytFetch from './util/nytFetch';
 
-import news from './data.json';
+// import news from './data.json';
 
 class App extends Component {
   constructor(props) {
@@ -36,7 +36,7 @@ class App extends Component {
 
   componentDidMount() {
     const self = this;
-    fetcher('http://api.nytimes.com/svc/topstories/v2/technology.json?api-key=3c2818c0a9774b299918c6c9767373aa')
+    nytFetch('technology')
       .then(result => {
         self.setState({
           news: reshapeNewsData(result.results),
