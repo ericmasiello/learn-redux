@@ -11,7 +11,6 @@ import NewsArchive from './components/NewsArchive';
 import Bookmarks from './components/Bookmarks';
 import Profile from './components/Profile';
 import Search from './components/Search';
-import nytFetch from './util/nytFetch';
 import store from './store';
 import loadNews from './actions/newsActions';
 
