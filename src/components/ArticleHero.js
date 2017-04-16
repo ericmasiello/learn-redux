@@ -11,7 +11,6 @@ function ArticleHero(props) {
     imageUrl,
   } = props;
 
-  const starClasses = ['bookmark'];
   return (
     <div
       className="article-hero"
