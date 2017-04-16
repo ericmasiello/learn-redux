@@ -9,7 +9,13 @@ class NewsArchive extends Component {
   }
 
   render() {
-    const { news } = this.props;
+    const { news, isLoading } = this.props;
+    if (isLoading) {
+      return (
+        <div className="loading">Loading...</div>
+      );
+    }
+    
     return (
       <ul className="news-archive">
         {news.map((article, i) => (
@@ -28,10 +34,12 @@ class NewsArchive extends Component {
 NewsArchive.propTypes = {
   news: PropTypes.arrayOf(PropTypes.shape(Article.propTypes)),
   loadNews: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool,
 };
 
 NewsArchive.defaultProps = {
   news: [],
+  isLoading: false,
 };
 
 export default NewsArchive;

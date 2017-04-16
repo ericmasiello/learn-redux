@@ -5,6 +5,7 @@ import NewsArchive from '../components/NewsArchive';
 function mapStateToProps(state) {
   return {
     news: state.news,
+    isLoading: state.isLoading,
   };
 }
 
