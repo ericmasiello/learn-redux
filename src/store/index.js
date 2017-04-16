@@ -1,11 +1,9 @@
 import { createStore, combineReducers } from 'redux';
-
-import { reshapeNewsData } from '../util/dataTransformations';
-import news from '../data.json';
+import newsReducer from '../reducers/newsReducer';
 
 const store = createStore(
   combineReducers({
-    news: () => reshapeNewsData(news.results),
+    news: newsReducer,
     searchTerm: () => '',
     bookmarks: () => [],
   })  
