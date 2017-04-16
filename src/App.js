@@ -14,8 +14,6 @@ import Search from './components/Search';
 import { reshapeNewsData } from './util/dataTransformations';
 import nytFetch from './util/nytFetch';
 
-// import news from './data.json';
-
 class App extends Component {
   constructor(props) {
     super(props);
