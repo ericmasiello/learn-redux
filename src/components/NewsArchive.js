@@ -15,7 +15,7 @@ class NewsArchive extends Component {
         <div className="loading">Loading...</div>
       );
     }
-    
+
     return (
       <ul className="news-archive">
         {news.map((article, i) => (
