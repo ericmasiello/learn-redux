@@ -4,6 +4,10 @@ import Article from './Article';
 import './NewsArchive.css';
 
 class NewsArchive extends Component {
+  componentDidMount() {
+    this.props.loadNews();
+  }
+
   render() {
     const { news } = this.props;
     return (
@@ -22,7 +26,8 @@ class NewsArchive extends Component {
 }
 
 NewsArchive.propTypes = {
-  news: PropTypes.arrayOf(PropTypes.shape(Article.propTypes))
+  news: PropTypes.arrayOf(PropTypes.shape(Article.propTypes)),
+  loadNews: PropTypes.func.isRequired,
 };
 
 NewsArchive.defaultProps = {
