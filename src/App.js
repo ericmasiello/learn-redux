@@ -12,13 +12,13 @@ import Bookmarks from './components/Bookmarks';
 import Profile from './components/Profile';
 import Search from './components/Search';
 import { reshapeNewsData } from './util/dataTransformations';
-
-import news from './data.json';
+import nytFetch from './util/nytFetch';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      news: [],
       bookmarks: [],
       searchTerm: '',
     };
@@ -30,6 +30,16 @@ class App extends Component {
     this.setState({
       searchTerm: event.target.value,
     });
+  }
+
+  componentDidMount() {
+    const self = this;
+    nytFetch('technology')
+      .then(result => {
+        self.setState({
+          news: reshapeNewsData(result.results),
+        });
+      })
   }
 
   render() {
@@ -58,7 +68,7 @@ class App extends Component {
               render={(props) => (
                 <NewsArchive
                   {...props}
-                  news={reshapeNewsData(news.results)}
+                  news={this.state.news}
                 />
               )}/>
             <Route path="/bookmarks" component={Bookmarks}/>
